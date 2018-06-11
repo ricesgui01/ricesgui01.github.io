@@ -1,0 +1,84 @@
+<!--xiaogui-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Apet注册页面</title>
+	<meta http-equiv="Content-Type" content="text/html" charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="CSS/register.css">
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<header id="head-c">
+		<span class="pull-left"><h2><a href="index.html">首页</a></h2></span><span class="pull-right"><h4>我已经注册，去<a href="login.html">登录</a> </h4>&nbsp;</span>
+	</header>
+	<hr>
+	<main>
+		<div class="container"><!--action="/views/registerEvent"-->
+
+			<form  method="post">
+			<h1>用户注册</h1>
+			<label><h3>用户名：<input type="text" name="name" value="" required="required"></h3></label>
+			<br>
+			<label><h3>邮箱&nbsp;&nbsp;&nbsp;：<input type="text" name="email" value="" required="required"></h3></label>是您的登录帐号，可用于找回密码
+			<br/>
+			<label><h3>密码&nbsp;&nbsp;&nbsp;：<input type="text" name="password" value="" required="required"></h3></label>请输入密码
+			<br/>
+			<label><h3>验证码：<input type="text" name="" id="checknum",height="50" onchange="return check_checknum(this.value)" required="required"></h3><span id="checknum_result"></label><!-- -->
+			<canvas id="canvas" width="150" height="50"></canvas>
+ 			 <a href="#" id="changeImg">看不清，换一张</a>
+		 （不区分大小写）
+			<br/>
+				<input type="checkbox" name="" required="required">阅读并接受<a href="#">《Apet网协议》</a>
+			</h6>
+			<br>
+			<button class="btn btn-default btn-sm" onclick="checkCookie()">注册</button>
+		</form>
+		</div>
+	</main>
+
+<!--页脚-->
+<footer class="rig">
+	<br/>
+	<a href="about_us.html">关于我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;Copyright &copy; 2018 AiPet All Rights Reserved.
+</footer>
+</body>
+</html>
+<script src="js/register.js">s</script>
+<script>
+	
+//设置cookie
+function setCookie(name,cvalue,exdays){
+  var d = new Date();
+  d.setTime(d.getTime()+(exdays*24*60*60*1000));
+  var expires = "expires="+d.toGMTString();
+  document.cookie = name+"="+cvalue+"; "+expires;
+}
+function getCookie(name){
+  var name = name + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) {
+    var c = ca[i].trim();
+    if (c.indexOf(name)==0) { return c.substring(name.length,c.length); }
+  }
+  return "";
+}
+function checkCookie(){
+  setCookie("name",user,30);
+  var user=getCookie("name");
+  if (user!=""){
+    alert("欢迎 " + user + " 再次访问");
+  }
+  else {
+  	alert("欢迎 " + user + " 再次访问");
+    user = prompt("请输入你的名字:","");
+      if (user!="" && user!=null){
+        setCookie("name",user,30);
+        
+      }
+  }
+}
+</script>
