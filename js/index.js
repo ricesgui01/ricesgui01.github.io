@@ -24,7 +24,7 @@
 			}          
 		})
 	}
-*/
+
 
 	//实现用户名获取后替代
 	var node = document.createElement("span");
@@ -45,5 +45,5 @@
 
 	//结束第二个提示
 	
-	
+	*/
 
