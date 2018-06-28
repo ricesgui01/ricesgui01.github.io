@@ -10,58 +10,49 @@
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script><!--引入百度jquery包-->
+	<script src="https://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+
 </head>
 <body>
 	<div id="head-c">
 	<span class="pull-left"><a href="index.html"><h2>首页</h2></a></span>
 	</div>
-<div class="container">
-	<form method="post" action="/views/loginEvent"> <!---->
-		<label class=""><h1>用户登录</h1></label>
+	<div class="container">
+	
+		<label class=""><h2>用户登录</h2></label>
 		<div class="div-bor">
-		<label><h3>邮箱：<input type="text" name="email" value="" required="required"></h3></label>请输入您的邮箱
+		<label>邮箱：<input type="text" name="email" id="email" placeholder="请输入您的注册邮箱" value="" required="required"></label><span id="e1"></span>
 		</div>
 		<div class="div-bor">
-		<label><h3>密码：<input type="password" name="password" value="" required="required"></h3></label>请输入密码
+		<label>密码：<input type="password" name="password" id="password" placeholder="请输入密码" value="" required="required"></label>
+		</div>
+		<div class="div-bor">
+		<label>验证码：<input type="text" id="checknum" placeholder="验证码" height="50" onchange="return check_checknum(this.value)" required="required"><span id="checknum_result"></label>
+			<canvas id="canvas" width="150" height="50"></canvas>
+ 			 <a href="#" id="changeImg">看不清，换一张</a>
+		 （不区分大小写）
+		<br/>
+		<br>
+		<div><input type="checkbox" name="" onselect="">记住密码&nbsp;|&nbsp;<a href="#">忘记密码？</a>
 		</div>
 		<br/>
-		<div ><span id=""><input type="checkbox" name="" onselect="remeberUser()">记住密码&nbsp;|&nbsp;<a href="#">忘记密码？</a></span>
-		</div>
-		<br/>
-		<button type="submit" class="btn btn-default" onclick="login_login()">登录</button>&nbsp;&nbsp;
+		<button type="button" class="btn btn-default" id="log">登录</button>&nbsp;&nbsp;
 		<button class="btn btn-default"><a href="register.html">注册</a></button>
-	</form>
-
 </div>
-
-</div>
-
+<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 <!--页脚-->
-<footer class="rig">
-	<br/>
+<footer class="rig">	
 	<a href="about_us.html">关于我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;Copyright &copy; 2018 AiPet All Rights Reserved.
 </footer>
-
-<script src="js/login.js"></script>
+<script src="js/register.js"></script>
 </body>
 </html>
-<script>
-	// 在点击登录时记录用户名信息
-function  remeberUser()
-{
-    var storage = window.localStorage;
-    storage["loginname"] = $("#email").val();
-    storage["bj"] =  "yes"; 
-    alert(email);
-}
-
-// 页面加载时判断缓存中isstorename是否为yes，是则取出用户名
-window.onload = function()
-{
-//判断是否存在过用户
-var storage = window.localStorage;
-if("yes" == storage["bj"])
-{               $("#email").val(storage["loginname"]);
- }
-}
-</script>

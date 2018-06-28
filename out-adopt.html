@@ -9,36 +9,22 @@
 	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
 	<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://media.liuyanzhao.com/wp-content/uploads/2017/11/ajaxfileupload.js"></script>
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
+	<script type="text/javascript" src="js/index.js"></script>
+
 </head>
 <body>	
 	<div>
-		<!--公共头部开始-->
-	<header>		
-		<div class="nav navbar-fixed-top">
-		<ul class="nav navbar-nav ">
-			<li><a href="index.html">APet.com</a></li>
-			<li><a class="disabled">|为使您有更好的用户体验，建议Google浏览器全屏显示</a></li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right">
-			<li><a href="login.html"><span class="glyphicon glyphicon-log-in">[登录]</a></li>
-			<li><a href="register.html"><span class="glyphicon glyphicon-user">[注册]</a></li>
-		</ul>
-		</div>
-
-	<div class="bj-img">
-			<img src="images/keji.jpg" width="100%" height="100%" alt="">
-		</div>
-	</header>
-
-	<!--公共头部结束-->
+			<!--公共头部开始-->
+	<header>	
+		<div class="nav navbar-fixed-top" >
 	<!--导航栏开始-->
-    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <nav class="navbar navbar-default navbar-inverse" role="navigation" style="color:black;">
     	<div class="container-fluid">
     	<div class="navbar-header">
-    		<a class="navbar-brand" href="index.html">首页</a>
+    		<a class="navbar-brand" href="index.html"><span class="glyphicon glyphicon-home"> 首页</span></a>
     	</div>
     	<div>
 		<ul class="nav navbar-nav">
@@ -79,78 +65,107 @@
 			<li><a href="details.html">领养须知</a></li>
 			<li><a href="help.html">使用助手</a></li>
 		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li><a class="disabled" id="txtHint" style="color:#5CACEE;font-size: 20px;"></a></li>
+			<li><a class="disabled" id="s1" style="color:#5CACEE;font-size: 20px;"></a></li>
+			<li><a href="#" id="third" style="color:#5CACEE;font-size: 20px;"></a></li>
+			<li id="user_info"><a href="user.html" id="forth" style="color:#5CACEE;font-size: 20px;">个人中心</a></li>
+			<li id="yincang"><a href="login.html"><span class="glyphicon glyphicon-log-in">[登录]</span></a></li>
+			<li id="yincang"><a href="register.html"><span id="yincang" class="glyphicon glyphicon-user">[注册]</span></a></li>
+		</ul>	
 	</div>
 	</div>
 </nav>
-
+</header>
+<div class="bj-img">
+			<img src="images/keji.jpg" width="100%" height="" alt="导航栏上背景图">
+		</div>	
+</div>		
+	<!--公共头部结束-->
 <main>	
 	<!--面包屑导航-->
 	<div class="container">
-	<div class="row clearfix">
+	<div class="row clearfix" id="outAdopt">
 		<div class="col-md-2 column">
 			<ul class="nav nav-pills" id="rootnav">
 				<li>
 					 <a href="index.html">首页</a>
 				</li>
 				<li class="disabled">
-					<a href="">-->我要送养</a>
+					<a href="#">-->我要送养</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 	
 	<div class="oa-text">	
-		<form method="post" action="">
-	<h4><label>*送养种类：<input type="radio" name="kind" class="btn-group"=> 狗狗</input><input type="radio" name="kind" class="btn-group"> 猫咪</input><input type="radio" name="kind" class="btn-group"> 其他</input></label>
+
+	<form method="post" id="form" enctype="multipart/form-data" onsubmit="return false;">
+	<h4><label>*送养种类：<input type="radio" name="petspecies" value="dog"class="btn-group"> 狗狗</input><input type="radio" name="petspecies" value="cat"class="btn-group"> 猫咪</input><input type="radio" name="petspecies" value="other"class="btn-group"> 其他</input></label>
 	</h4>
 	<h4>
-		<label>*宠物昵称：<input type="text" name="" required="required"></label>
+		<label>*宠物昵称：<input type="text" name="name" required="required"></label>
 	</h4>
 	<h4>
-		<label>*性别选择：<input type="radio" name="sex" class="btn-group" required="required">男</input><input type="radio" name="sex" class="btn-group">女</input></label>
+		<label>性别选择：<input type="radio" id="male" value="男" name="sex" class="btn-group" >男</input><input type="radio" name="sex" value="女" id="female" class="btn-group">女</input></label>
 	</h4>
 	<h4>
 		<label>*标题:<input type="text" name="placeouttitle" required="required"></label>
 	</h4>
 	<h4>
-		<label>宠物年龄：<input type="number" name="age" min="0" max="100" step="1">年<input type="number" name="age" min="0" max="100" step="1">月</label>
+		<label>宠物年龄：<input type="number" name="age_year" min="0" max="20" step="1">年<input type="number" name="age_month" min="0" max="12" step="1" >月</label>
 	</h4>
 	<h4>
-		<label>宠物体重：<input type="text" name="">kg</label>
+		<label>宠物体重：<input type="text" name="weight" value="0">kg</label>
 	</h4>
 	<h4>
-		<label>*联系人姓名:<input type="text" name="name" required="required" ></label>
+		<label>*联系人姓名:<input type="text" name="realname" required="required" ></label>
 	</h4>
 	<h4>
-		<label>*联系方式：<input type="text" name="number" required="required" ></label>
+		<label>*联系方式:<input type="text" name="number" maxlength="11" required="required" ></label>
 	</h4>
 	<h4>
 		<label>*详细地址：<input type="text" name="address" required="required"></label>
 	</h4>
 	<h4>
-		<label for="inputfile">上传照片:</label>
-		<input type="file" id="inputfile"/>
+		<label for="inputfile">*上传照片:</label>
+		<input type="file" id="file" name="petphotourl" accept="image/gif,image/jpeg,image/jpg,image/png,image/svg" enctype="multipart/form-data"/><span id="con"></span>
+		<br>
+		<span id="loadPic"></span>
 	</h4>
 	<h4>
-		<label>宠物描述：
+		<label>领养要求：
 		<div class="panel panel-default" id="d-p">
 			<h5>请描述您的宠物的性格和喜好。</h5>
 			<div class="panel-body">
-				<textarea rows="5" required="required"></textarea>
+				<textarea name="adoptres" id="txt2" rows="5" required="required"></textarea>
 			</div>
 		</div>
 	</label>
 	</h4>
-	<h4><button type="button" class="btn btn-success">发布</button></h4>
+	<h4>
+		<label>*宠物描述：
+		<div class="panel panel-default" id="d-p">
+			<h5>请描述您的宠物的性格和喜好。</h5>
+			<div class="panel-body">
+				<textarea name="petdescri" id="txt1" rows="5" required="required"></textarea>
+			</div>
+		</div>
+	</label>
+	</h4>
+	<h4><button type="submit" class="btn btn-success" id="btn">发布</button></h4>
 	</form>
 	</div>
 	</div>
 </main>
 <!--页脚-->
+<div id="d-img">
+	<img src="images/soso2.jpg" width="100%" height="100%" alt="sos图片">
+</div>
 <footer class="rig">
-	<br/>
+	
 	<a href="about_us.html">关于我们</a>&nbsp;&nbsp;|&nbsp;&nbsp;Copyright &copy; 2018 AiPet All Rights Reserved.
 </footer>
 </body>
-
+<script type="text/javascript" src="js/out-adopt.js"></script>
 </html>
